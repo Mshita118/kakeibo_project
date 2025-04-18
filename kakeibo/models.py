@@ -2,6 +2,18 @@ from django.db import models #django.db.modelsを使ってテーブルをオブ�
 from django.contrib.auth.models import User #Djangoのユーザー認証を定義する
 
 
+class Kakeibo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # ユーザーごとのデータ管理
+    date = models.DateField()  # 日付
+    category = models.CharField(max_length=50)  # カテゴリ（食費・交通費など）
+    description = models.CharField(max_length=200, blank=True)  # メモ
+    amount = models.IntegerField()  # 金額（整数）
+
+    def __str__(self):
+        return f'{self.date} - {self.category}: {self.amount}円'
+
+
+
 class Category(models.Model): #DBのテーブルを定義
     name = models.CharField(max_length=50) #カテゴリの名前を表示するフィールドを定義
     TYPE_CHOICES = ( #選択肢を定義するタプル

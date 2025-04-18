@@ -1,0 +1,6 @@
+<h2>新しい記録を追加</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">登録</button>
+</form>

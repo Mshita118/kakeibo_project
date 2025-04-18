@@ -1,6 +1,5 @@
 from django.contrib import admin #Djangoの管理機能のインポート
-from .models import Category, Record #kakeibo/models.pyから関数をインポート
-
+from .models import Category, Record
 
 @admin.register(Category) #Django管理画面でCategoryモデルを管理する
 class CategoryAdmin(admin.ModelAdmin): #管理画面用のクラス
